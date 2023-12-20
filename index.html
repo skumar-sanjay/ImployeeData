@@ -1,0 +1,124 @@
+<!--create a html page to demonstrate the use of parent(),parents(),next(),child(),prev() function-->
+<html>
+    <head>
+   <script src="js/jquery-3.7.1.min.js"></script>
+   <script>
+    $(document).ready(function(){
+        $("#tbl tr:odd").css({"background-color":"gray","color":"white"});
+        $("#tbl tr:even").css({"background-color":"silver","color":"white"});
+        $("#tbl tr:first").css({"background-color":"black","color":"white"});
+            //calculating total price
+          $("#tbl tr:odd").each(function(index){
+            var uprice=$(this).children().eq(2).text();
+            var qty=$(this).children().eq(3).text(); 
+
+            /* var sp=$(this).next().find('.sptotal');
+            var total=parseFloat(uprice)*parseFloat(qty)
+            sp.text(total);
+            */
+
+           $(this).next().find(".sptotal").text(uprice*qty);
+          });
+
+               //show hide details row
+              $(".det").click(function(){
+                var x=$(this).text().trim().toUpperCase();
+                if(x=="SHOW"){
+                    //var td=$(this).parent().html();
+
+                    $(this).text("Hide");
+                } 
+                else{
+                   // $(this).parents("tr").next().slideUp();
+                    $(this).text("Show");
+                }
+                $(this).parents("tr").next().slideToggle(200);
+              });
+    });
+   </script>
+   <style>
+    .childrow {
+       display:none;      
+    }
+    .det{
+        cursor:pointer;
+        color:navy;
+    }
+   </style>
+    </head>
+    <body>
+        <table border="1" width="60%" id="tbl" ="0">
+               <tr>
+                <th>PId</th>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Details</th>
+               </tr>
+
+               <tr class="mainrow">
+                <td>101</td>
+                <td>Laptop</td>
+                <td>50000</td>
+                <td>3</td>
+                <td><span class="det">show</span></td>
+               </tr>
+               <tr class="childrow">
+                <td colspan="5">
+                    Description:HP Pavilion with i5 Proceesor,Original window 11,8GB Ram,512GB SSD.<b>Total Price:</b><span class="sptotal" style="color:blue"></span>
+                </td>
+               </tr>
+               <tr class="mainrow">
+                <td>102</td>
+                <td>Pen Drive</td>
+                <td>400</td>
+                <td>10</td>
+                <td><span class="det">show</span></td>
+               </tr>
+               <tr class="childrow">
+                <td colspan="5">
+                    Description: SanDisk Metalik Pendrive,Storage capacity 32GB.<b>Total Price:</b><span class="sptotal" style="color:blue"></span>
+                </td>
+               </tr>
+
+               <tr class="mainrow">
+                <td>103</td>
+                <td>keyboard</td>
+                <td>500</td>
+                <td>15</td>
+                <td><span class="det">show</span></td>
+               </tr>
+               <tr class="childrow">
+                <td colspan="5">
+                    Description:HP keyboard with night light.<b>Total Price:</b><span class="sptotal" style="color:blue"></span>
+                </td>
+               </tr>
+
+               <tr class="mainrow">
+                <td>104</td>
+                <td>Mobile</td>
+                <td>20000</td>
+                <td>5</td>
+                <td><span class="det">show</span></td>
+               </tr>
+               <tr class="childrow">
+                <td colspan="5">
+                    Description:Vivo mobile with 64 Mpx camera with altra pro.<b>Total Price:</b><span class="sptotal" style="color:blue"></span>
+                </td>
+               </tr>
+
+               <tr class="mainrow">
+                <td>105</td>
+                <td>Tablet</td>
+                <td>10000</td>
+                <td>8</td>
+                <td><span class="det">show</span></td>
+               </tr>
+               <tr class="childrow">
+                <td colspan="5">
+                    Description:Accer tablet with 8GB Ram,and stirage 128 GB.<b>Total Price:</b><span class="sptotal" style="color:blue"></span>
+                </td>
+               </tr>
+        </table>
+    </body>
+</html>
