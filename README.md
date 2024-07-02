@@ -1,2 +1,3 @@
 # ImployeeData
-Using jQquery function 
+Here using jQuery function.
+In this program save datr of employ.
